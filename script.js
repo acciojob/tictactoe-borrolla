@@ -6,69 +6,66 @@
             if (player1 && player2) {
                 document.querySelector('h1').style.display = 'block';
                 document.querySelector('.message').textContent = `${player1}, you're up!`;
-                document.querySelector('.board').style.display = 'grid';
-			}
-	});
-        
+                
+                document.getElementById('p1-board-title').textContent = player1;
+                document.getElementById('p2-board-title').textContent = player2;
+                
+                document.getElementById('p1-board').style.display = 'grid';
+                document.getElementById('p2-board').style.display = 'grid';
+
+                createBoard('p1-board');
+                createBoard('p2-board');
+                createBoard('winner-board');
+            }
+        });
 
         let currentPlayer = 'X';
-        let players = {'X': player1, 'O': player2};
-// Add event listeners to cells
+        let players = {};
         document.getElementById('submit').addEventListener('click', function() {
-            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player2').value };
+            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player-2').value };
         });
         
-        document.querySelectorAll('.cell').forEach(cell => {
-            cell.addEventListener('click', function() {
-                if (!this.textContent) {
-                    this.textContent = currentPlayer;
-                    if (checkWin()) {
-                        document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
-                        highlightWinningCells();
-                        return;
-                    }
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
+        function createBoard(boardId) {
+            const board = document.getElementById(boardId);
+            board.innerHTML = '';
+            for (let i = 1; i <= 9; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.id = `${boardId}-${i}`;
+                if (boardId !== 'winner-board') {
+                    cell.addEventListener('click', () => makeMove(i, boardId));
                 }
-            });
-        });
-	
-
-      function checkWin() {
-    const winningCombos = [
-        [1, 2, 3], [4, 5, 6], [7, 8, 9],
-        [1, 4, 7], [2, 5, 8], [3, 6, 9],
-        [1, 5, 9], [3, 5, 7]
-    ];
-    
-    for (let combo of winningCombos) {
-        if (combo.every(id => document.getElementById(id).textContent === currentPlayer)) {
-            highlightWinningCells(combo);
-            return combo;  // Return the winning combo instead of `true`
-        }
-    }
-    return;  // Return null if no one has won yet
-}
-document.querySelectorAll('.cell').forEach(cell => {
-    cell.addEventListener('click', function() {
-        if (!this.textContent) {
-            this.textContent = currentPlayer;
-            let winningCombo = checkWin();
-            if (winningCombo) {
-                document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
-                highlightWinningCells(winningCombo);
-                return;
+                board.appendChild(cell);
             }
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
         }
-    });
-});
-
-function highlightWinningCells(combo) {
-    if (combo) { // Ensure combo is not undefined
-        combo.forEach(id => document.getElementById(id).classList.add('winner'));
-    }
-}
-
-
+        
+        function makeMove(cellId, boardId) {
+            const boardCell = document.getElementById(`${boardId}-${cellId}`);
+            if (!boardCell.textContent && boardId === `p${currentPlayer === 'X' ? 1 : 2}-board`) {
+                boardCell.textContent = currentPlayer;
+                if (checkWin(boardId)) {
+                    document.getElementById('winner-board-title').style.display = 'block';
+                    document.getElementById('winner-board').style.display = 'grid';
+                    document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
+                    return;
+                }
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
+            }
+        }
+        
+        function checkWin(boardId) {
+            const winningCombos = [
+                [1, 2, 3], [4, 5, 6], [7, 8, 9],
+                [1, 4, 7], [2, 5, 8], [3, 6, 9],
+                [1, 5, 9], [3, 5, 7]
+            ];
+            return winningCombos.some(combo => {
+                if (combo.every(id => document.getElementById(`${boardId}-${id}`).textContent === currentPlayer)) {
+                    combo.forEach(id => document.getElementById(`winner-board-${id}`).textContent = currentPlayer);
+                    return true;
+                }
+                return false;
+            });
+        }
+  
