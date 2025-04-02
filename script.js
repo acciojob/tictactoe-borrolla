@@ -47,8 +47,23 @@
             return combo;  // Return the winning combo instead of `true`
         }
     }
-    return null;  // Return null if no one has won yet
+    return;  // Return null if no one has won yet
 }
+document.querySelectorAll('.cell').forEach(cell => {
+    cell.addEventListener('click', function() {
+        if (!this.textContent) {
+            this.textContent = currentPlayer;
+            let winningCombo = checkWin();
+            if (winningCombo) {
+                document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
+                highlightWinningCells(winningCombo);
+                return;
+            }
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
+        }
+    });
+});
 
 function highlightWinningCells(combo) {
     if (combo) { // Ensure combo is not undefined
