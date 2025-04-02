@@ -1,12 +1,11 @@
 //your JS code here. If required.
-	document.getElementById('submit').addEventListener('click', function() {
-            const player1 = document.getElementById('player1').value;
-            const player2 = document.getElementById('player2').value;
+ document.getElementById('submit').addEventListener('click', function() {
+            const player1 = document.getElementById('player-1').value;
+            const player2 = document.getElementById('player-2').value;
             
             if (player1 && player2) {
                 document.querySelector('h1').style.display = 'block';
                 document.querySelector('.message').textContent = `${player1}, you're up!`;
-				
                 
                 document.getElementById('p1-board-title').textContent = player1;
                 document.getElementById('p2-board-title').textContent = player2;
@@ -23,7 +22,7 @@
         let currentPlayer = 'X';
         let players = {};
         document.getElementById('submit').addEventListener('click', function() {
-            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player2').value };
+            players = { 'X': document.getElementById('player-1').value, 'O': document.getElementById('player-2').value };
         });
         
         function createBoard(boardId) {
@@ -48,6 +47,7 @@
                     document.getElementById('winner-board-title').style.display = 'block';
                     document.getElementById('winner-board').style.display = 'grid';
                     document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
+                    highlightWinnerBoard();
                     return;
                 }
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
@@ -63,13 +63,18 @@
             ];
             return winningCombos.some(combo => {
                 if (combo.every(id => document.getElementById(`${boardId}-${id}`).textContent === currentPlayer)) {
-                    combo.forEach(id => document.getElementById(`winner-board-${id}`).textContent = currentPlayer);
+                    combo.forEach(id => {
+                        const winnerCell = document.getElementById(`winner-board-${id}`);
+                        winnerCell.textContent = currentPlayer;
+                        winnerCell.classList.add('winner');
+                    });
                     return true;
                 }
                 return false;
             });
         }
-  function highlightWinnerBoard() {
+        
+        function highlightWinnerBoard() {
             document.querySelectorAll('#winner-board .cell').forEach(cell => {
                 if (cell.textContent) {
                     cell.classList.add('winner');
