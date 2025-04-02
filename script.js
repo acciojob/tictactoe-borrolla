@@ -6,6 +6,7 @@
             if (player1 && player2) {
                 document.querySelector('h1').style.display = 'block';
                 document.querySelector('.message').textContent = `${player1}, you're up!`;
+				
                 
                 document.getElementById('p1-board-title').textContent = player1;
                 document.getElementById('p2-board-title').textContent = player2;
@@ -22,7 +23,7 @@
         let currentPlayer = 'X';
         let players = {};
         document.getElementById('submit').addEventListener('click', function() {
-            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player-2').value };
+            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player2').value };
         });
         
         function createBoard(boardId) {
@@ -68,4 +69,10 @@
                 return false;
             });
         }
-  
+  function highlightWinnerBoard() {
+            document.querySelectorAll('#winner-board .cell').forEach(cell => {
+                if (cell.textContent) {
+                    cell.classList.add('winner');
+                }
+            });
+        }
