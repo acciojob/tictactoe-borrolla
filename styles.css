@@ -14,13 +14,13 @@ h1{
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 0px;
         }
         .board {
             display: none;
             grid-template-columns: repeat(3, 100px);
             grid-template-rows: repeat(3, 100px);
-            gap: 5px;
+            gap: 0px;
         }
         .cell {
             width: 100px;
