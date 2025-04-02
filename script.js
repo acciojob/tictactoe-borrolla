@@ -1,7 +1,7 @@
 //your JS code here. If required.
 	document.getElementById('submit').addEventListener('click', function() {
-            const player1 = document.getElementById('player-1').value;
-            const player2 = document.getElementById('player-2').value;
+            const player1 = document.getElementById('player1').value;
+            const player2 = document.getElementById('player2').value;
             
             if (player1 && player2) {
                 document.querySelector('h1').style.display = 'block';
@@ -11,9 +11,10 @@
         });
 
         let currentPlayer = 'X';
-        let players = {};
+        let players = {'X': player1, 'O': player2};
+// Add event listeners to cells
         document.getElementById('submit').addEventListener('click', function() {
-            players = { 'X': document.getElementById('player-1').value, 'O': document.getElementById('player-2').value };
+            players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player2').value };
         });
         
         document.querySelectorAll('.cell').forEach(cell => {
