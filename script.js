@@ -7,8 +7,9 @@
                 document.querySelector('h1').style.display = 'block';
                 document.querySelector('.message').textContent = `${player1}, you're up!`;
                 document.querySelector('.board').style.display = 'grid';
-            }
-        });
+			}
+	});
+        
 
         let currentPlayer = 'X';
         let players = {'X': player1, 'O': player2};
@@ -31,29 +32,28 @@
                 }
             });
         });
+	
 
-        function checkWin() {
-            const winningCombos = [
-                [1, 2, 3], [4, 5, 6], [7, 8, 9],
-                [1, 4, 7], [2, 5, 8], [3, 6, 9],
-                [1, 5, 9], [3, 5, 7]
-            ];
-            return winningCombos.find(combo => {
-                if (combo.every(id => document.getElementById(id).textContent === currentPlayer)) {
-                    highlightWinningCells(combo);
-                    return true;
-                }
-                return false;
-            });
+      function checkWin() {
+    const winningCombos = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9],
+        [1, 4, 7], [2, 5, 8], [3, 6, 9],
+        [1, 5, 9], [3, 5, 7]
+    ];
+    
+    for (let combo of winningCombos) {
+        if (combo.every(id => document.getElementById(id).textContent === currentPlayer)) {
+            highlightWinningCells(combo);
+            return combo;  // Return the winning combo instead of `true`
         }
+    }
+    return null;  // Return null if no one has won yet
+}
 
-        function highlightWinningCells(combo) {
-            combo.forEach(id => document.getElementById(id).classList.add('winner'));
-        }
-
-
-
-
-
+function highlightWinningCells(combo) {
+    if (combo) { // Ensure combo is not undefined
+        combo.forEach(id => document.getElementById(id).classList.add('winner'));
+    }
+}
 
 
