@@ -49,6 +49,7 @@
                 boardCell.textContent = currentPlayer;
 				winnerCell.textContent = currentPlayer; // update the winner board with the current move
                 if (checkWin(boardId)) {
+					document.getElementById('winner-board-title').textContent = "TIC TAC TOE";
 					 document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;
                     document.getElementById('winner-board-title').style.display = 'block';
                     document.getElementById('winner-board').style.display = 'grid';
@@ -58,6 +59,9 @@
                 }
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
+				document.getElementById('p1-message').textContent = `${player1}, you're up!`;
+               document.getElementById('p1-message').textContent = `${player2}, you're up!`;
+
             }
         }
         
