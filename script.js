@@ -58,10 +58,11 @@
                     return;
                 }
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
-				document.getElementById('p1-message').textContent = `${player1}, you're up!`;
-               document.getElementById('p1-message').textContent = `${player2}, you're up!`;
-
+                if (currentPlayer === 'X') {
+			    document.getElementById('p1-message').textContent = `${player1}, you're up!`;
+			     } else {
+			    document.getElementById('p2-message').textContent = `${player2}, you're up!`;
+		        }
             }
         }
         
