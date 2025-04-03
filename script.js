@@ -48,7 +48,7 @@
                 if (checkWin(boardId)) {
                     document.getElementById('winner-board-title').style.display = 'block';
                     document.getElementById('winner-board').style.display = 'grid';
-                    document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;
+                    document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;  
                     highlightWinnerBoard();
                     return;
                 }
@@ -84,5 +84,20 @@
                 
             });
         }
-
+cy.get('input[name="player1"]').should('be.visible');
+() => {  
+    cy.visit(baseUrl + "/main.html");  
+    cy.get('#player-1').should('be.visible');  
+    cy.get('#player-1').type('Player1');  
+    cy.get('#player-2').should('be.visible');  
+    cy.get('#player-2').type('Player2');  
+    cy.get('#submit').click();  
+    cy.get('.message').should('contain', "Player1, you're up");  
+    cy.get('#1').click();  
+    cy.get('#4').click();  
+    cy.get('#2').click();  
+    cy.get('#5').click();  
+    cy.get('#3').click();  
+    cy.get('.message').should('contain', "Player1 congratulations you won!");  
+}
 
