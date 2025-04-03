@@ -11,18 +11,19 @@ body {
 
 .input-container {
     margin-bottom: 20px;
+	margin:
 }
 
 .boards-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    input-gap: 20px
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, 80px);
-    grid-gap: 5px;
+    grid-gap: 0px;
     justify-content: center;
     margin-top: 10px;
 }
