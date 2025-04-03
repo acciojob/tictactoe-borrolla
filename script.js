@@ -7,7 +7,7 @@
 			 const header = document.querySelector('h1');
 			 header.style.display = 'block';
               header.textContent = "TIC TAC TOE";  // Ensure it's always displayed
-            //document.querySelector('h1').style.display = 'block';
+            //document.querySelector('h1').style.display = 'visible';
             document.querySelector('.message').textContent = `${player1}, you're up!`;
             
             document.getElementById('p1-board-title').textContent = player1;
@@ -25,7 +25,7 @@
     let currentPlayer = 'X';
     let players = {};
     document.getElementById('submit').addEventListener('click', function() {
-        players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player-2').value };
+        players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player2').value };
     });
     
     function createBoard(boardId) {
