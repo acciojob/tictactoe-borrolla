@@ -51,10 +51,10 @@ const player2 = document.getElementById('player-2').value;
   winnerCell.textContent = currentPlayer; // update the winner board with the current move
 
 	   //       if (currentPlayer === 'X') {
-    //     currentPlayer = 'O';
+
     //     document.querySelector('.message').textContent = `${player1}, you're up!`;
-    // } else {
-    //     currentPlayer = 'X';
+    // }   else {
+       
     //     document.querySelector('.message').textContent = `${player2}, you're up!`;
     // }
 
@@ -69,10 +69,13 @@ const player2 = document.getElementById('player-2').value;
                 return;
             }
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
-			document.getElementById('p1-message').textContent = `${player1}, you're up!`;
-           document.getElementById('p2-message').textContent = `${player2}, you're up!`;
-
+           if (currentPlayer === 'X') {
+            document.getElementById('p1-message').textContent = `${players['X']}, you're up!`;
+            document.getElementById('p2-message').textContent = "";
+        } else {
+            document.getElementById('p2-message').textContent = `${players['O']}, you're up!`;
+            document.getElementById('p1-message').textContent = "";
+        }
         }
     }
     
