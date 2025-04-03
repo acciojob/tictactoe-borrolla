@@ -1,7 +1,7 @@
 //your JS code here. If required.
   document.getElementById('submit').addEventListener('click', function() {
-const player1 = document.getElementById('player-1').value;
-const player2 = document.getElementById('player-2').value;
+	const player1 = document.getElementById('player1').value;
+	const player2 = document.getElementById('player2').value;
 
          if (player1 && player2) {
 			 const header = document.querySelector('h1');
@@ -25,7 +25,7 @@ const player2 = document.getElementById('player-2').value;
     let currentPlayer = 'X';
     let players = {};
     document.getElementById('submit').addEventListener('click', function() {
-        players = { 'X': document.getElementById('player-1').value, 'O': document.getElementById('player-2').value };
+        players = { 'X': document.getElementById('player1').value, 'O': document.getElementById('player-2').value };
     });
     
     function createBoard(boardId) {
@@ -60,7 +60,7 @@ const player2 = document.getElementById('player-2').value;
 
 
             if (checkWin(boardId)) {
-				document.getElementById('winner-board-title').textContent = "TIC TAC TOE";
+				document.getElementById('winner-board-title').textContent = `TIC TAC TOE`;
 			    document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;    
                 document.getElementById('winner-board-title').style.display = 'block';
                 document.getElementById('winner-board').style.display = 'grid';
@@ -70,9 +70,11 @@ const player2 = document.getElementById('player-2').value;
             }
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
            if (currentPlayer === 'X') {
+			
             document.getElementById('p1-message').textContent = `${players['X']}, you're up!`;
             document.getElementById('p2-message').textContent = "";
         } else {
+		
             document.getElementById('p2-message').textContent = `${players['O']}, you're up!`;
             document.getElementById('p1-message').textContent = "";
         }
