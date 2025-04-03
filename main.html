@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplayer Tic Tac Toe</title>
-    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Tic Tac Toe</h1>
-        <div class="input-container">
-            <label>Player 1</label>
-            <input type="text" id="player1" placeholder="Enter Player 1 Name">
-            <br><br>
-            <label>Player 2</label>
-            <input type="text" id="player2" placeholder="Enter Player 2 Name">
-            <br><br>
-            <button id="submit">Start Game</button>
+
+<body class="container">
+	<!-- the entire body must be written by student -->
+	<h1>Tic Tac Toe</h1>
+    <div id="input-cont">
+        <label for="player1">Player 1: </label>
+        <input type="text" id="player1"  placeholder="enter name" required><br>
+        <label for="player2">Player 2: </label>
+        <input type="text" id="player2"  placeholder="enter name" required><br>
+        <button id="submit" type="submit">Start Game</button>
+    </div>
+    <div id="grid-cont">
+        <h3 class="message">Game Started</h3>
+        <div class="game-grid">
+            <div id="1"></div>
+            <div id="2"></div>
+            <div id="3"></div>
+            <div id="4"></div>
+            <div id="5"></div>
+            <div id="6"></div>
+            <div id="7"></div>
+            <div id="8"></div>
+            <div id="9"></div>
         </div>
-        <div class="game-container" style="display: none;">
-            <h2 id="current-player-message"></h2>
-            <div class="board" id="game-board"></div>
-            <h2 id="winner-message" style="display: none;"></h2>
+        <div class="btn-cont">
+            <button type="submit">Clear</button>
+            <button type="submit">Restart</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="./script.js">
+</script>
+
 </body>
+
 </html>
