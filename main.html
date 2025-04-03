@@ -1,47 +1,30 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiplayer Tic Tac Toe</title>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div class="container">
+    <div class="container">
         <h1>Tic Tac Toe</h1>
         <div class="input-container">
             <label>Player 1</label>
             <input type="text" id="player1" placeholder="Enter Player 1 Name">
-			<br>
-			<br>
+            <br><br>
             <label>Player 2</label>
             <input type="text" id="player2" placeholder="Enter Player 2 Name">
-			<br>
-			<br>
+            <br><br>
             <button id="submit">Start Game</button>
         </div>
-
-</div>
-              <div class="boards-container">
-    <div>
-        <h2 id="p1-board-title"></h2>
-        <div class="message" id="p1-message"></div>
-        <div class="board" id="p1-board"></div>
-    </div>
-    <div>
-        <h2 id="p2-board-title"></h2>
-        <div class="message" id="p2-message"></div>
-        <div class="board" id="p2-board"></div>
-    </div>
-    <div>
-        <h2 id="winner-board-title" style="display:none;">Winner Board</h2>
-        <div class="message" id="winner-message"></div>
-        <div class="board" id="winner-board" style="display:none;"></div>
-    </div>
-</div>    
+        <div class="game-container" style="display: none;">
+            <h2 id="current-player-message"></h2>
+            <div class="board" id="game-board"></div>
+            <h2 id="winner-message" style="display: none;"></h2>
         </div>
     </div>
-    <script type="text/javascript" src="./script.js">
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
