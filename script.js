@@ -1,7 +1,7 @@
 //your JS code here. If required.
  document.getElementById('submit').addEventListener('click', function() {
-            const player1 = document.getElementById('#player-1').value;
-            const player2 = document.getElementById('#player-2').value;
+            const player1 = document.getElementById('player-1').value;
+            const player2 = document.getElementById('player-2').value;
             
             if (player1 && player2) {
                 document.querySelector('h1').style.display = 'block';
@@ -76,9 +76,10 @@
         
         function highlightWinnerBoard() {
             document.querySelectorAll('#winner-board .cell').forEach(cell => {
-                if (cell.textContent) {
+                if(Cell.textContent){
                     cell.classList.add('winner');
-                }
+				}
+                
             });
         }
 
