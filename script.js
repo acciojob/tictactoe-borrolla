@@ -31,10 +31,11 @@
     function createBoard(boardId) {
         const board = document.getElementById(boardId);
         board.innerHTML = '';
-        for (let i = 1; i <= 9; i++) {
+        for (let i = 1; i <=9; i++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.id = `${boardId}-${i}`;
+			 cell.dataset.id = `${i}`; // add a data-id attribute for the Cypress test
             if (boardId !== 'winner-board') {
                 cell.addEventListener('click', () => makeMove(i, boardId));
             }
