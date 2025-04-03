@@ -81,16 +81,10 @@
                 if(Cell.textContent){
                     cell.classList.add('winner');
 				}
-                
-            });
-        }
-cy.get('input[name="player1"]').should('be.visible');
-() => {  
+				it('Should allow Player1 to win the game', () => {  
     cy.visit(baseUrl + "/main.html");  
-    cy.get('#player-1').should('be.visible');  
-    cy.get('#player-1').type('Player1');  
-    cy.get('#player-2').should('be.visible');  
-    cy.get('#player-2').type('Player2');  
+    cy.get('#player-1').should('be.visible').type('Player1');  
+    cy.get('#player-2').should('be.visible').type('Player2');  
     cy.get('#submit').click();  
     cy.get('.message').should('contain', "Player1, you're up");  
     cy.get('#1').click();  
@@ -99,5 +93,9 @@ cy.get('input[name="player1"]').should('be.visible');
     cy.get('#5').click();  
     cy.get('#3').click();  
     cy.get('.message').should('contain', "Player1 congratulations you won!");  
-}
+});
+                
+            });
+        }
+
 
