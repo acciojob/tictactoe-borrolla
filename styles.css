@@ -4,7 +4,7 @@ h1{
 }
 .container {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 5px;
         }
         h1 {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@ h1{
         .boards-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
             margin-top: 0px;
         }
         .board {
@@ -53,3 +53,4 @@ h1{
             font-size: 1em;
             cursor: pointer;
         }
+
