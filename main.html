@@ -1,49 +1,31 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiplayer Tic Tac Toe</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-	<h1>TIC TAC TOE</h1>
 	<div class="container">
-		<label for="tile">Player 1</label>
-        <input type="text" id="player-1" placeholder="Player 1 Name">
-		<br>
-		<label for="title">Player 2</label>
-        <input type="text" id="player-2" placeholder="Player 2 Name">
-		<br>
-        <button id="submit">Start Game</button>
-        
-        <h1 style="display:none;">Tic Tac Toe</h1>
-        <div class="message"></div>
-        
-        <div class="boards-container">
-            <div>
-                <h2 id="p1-board-title"></h2>
-				<div class="mesage" id="p1-message"></div>
-                <div class="board" id="p1-board"></div>
-            </div>
-            <div>
-                <h2 id="p2-board-title"></h2>
-				<div class="messgae" id="p2-message"></div>
-                <div class="board" id="p2-board"></div>
-            </div>
-            <div>
-                <h2 id="winner-board-title" style="display:none;">Winner Board</h2>
-				<div class="message" id="winner-message"></div>
-                <div class="board" id="winner-board" style="display:none;"></div>
-            </div>
+        <h1>Tic Tac Toe</h1>
+        <div class="input-container">
+            <label>Player 1</label>
+            <input type="text" id="player-1" placeholder="Enter Player 1 Name">
+			<br>
+            <label>Player 2</label>
+            <input type="text" id="player-2" placeholder="Enter Player 2 Name">
+			<br>
+            <button id="submit">Start Game</button>
         </div>
-    </div>
+
+        <div class="game-container" style="display: none;">
+            <h1>Tic Tac Toe</h1>
+            <div class="message" id="game-message"></div>
+            <div class="board" id="game-board"></div>
+        </div>
+	
     <script type="text/javascript" src="./script.js">
 </script>
-
 </body>
-
 </html>

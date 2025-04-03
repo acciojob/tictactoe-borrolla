@@ -2,55 +2,45 @@
 h1{
 	text-align:center;
 }
-.container {
-            text-align: center;
-            margin-top: 5px;
-        }
-        h1 {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-        }
-        .boards-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 0px;
-        }
-        .board {
-            display: none;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 0px;
-        }
-        .cell {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            border: 1px solid black;
-            cursor: pointer;
-            background-color: pink;
-        }
-        .message {
-            font-size: 1.5em;
-            margin: 20px;
-        }
-        .winner {
-            background-color: purple !important;
-            color: white;
-        }
-        input {
-            width: 200px;
-            height: 30px;
-            font-size: 1em;
-            margin: 10px;
-        }
-        button {
-            width: 220px;
-            height: 40px;
-            font-size: 1em;
-            cursor: pointer;
-        }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
+.container {
+    margin: 20px auto;
+    width: 300px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 0px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.cell:hover {
+    background: lightcoral;
+}
+
+.winner {
+    background: purple !important;
+    color: white;
+}
