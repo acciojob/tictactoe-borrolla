@@ -22,7 +22,7 @@
         let currentPlayer = 'X';
         let players = {};
         document.getElementById('submit').addEventListener('click', function() {
-            players = { 'X': document.getElementById('player-1').value, '0': document.getElementById('player-2').value };
+            players = { 'X': document.getElementById('player-1').value, 'O': document.getElementById('player-2').value };
         });
         
         function createBoard(boardId) {
@@ -50,7 +50,7 @@
                     highlightWinnerBoard();
                     return;
                 }
-                currentPlayer = currentPlayer === 'X' ? '0' : 'X';
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
             }
         }
