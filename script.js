@@ -9,7 +9,10 @@ document.getElementById('submit').addEventListener('click', function() {
     }
 
     document.querySelector('.game-container').style.display = 'block';
-    document.getElementById('game-message').textContent = `${player1}, you're up!`;
+    
+    document.getElementById('game-message').textContent = `${player1}, you're up!`; // ✅ One message
+    document.getElementById('p1-message').textContent = `${player1}, you're up!`;
+    document.getElementById('p2-message').textContent = `${player2}, you're up!`;
 
     createBoard();
 });
@@ -19,15 +22,17 @@ let players = {};
 let boardState = Array(9).fill(null);
 
 function createBoard() {
-    const board = document.getElementById('game-board');
-    board.innerHTML = ''; 
-    boardState = Array(9).fill(null);
-    
+    createIndividualBoard('p1-board');
+    createIndividualBoard('p2-board');
     players = {
         'X': document.getElementById('player-1').value,
         'O': document.getElementById('player-2').value
     };
+}
 
+function createIndividualBoard(boardId) {
+    const board = document.getElementById(boardId);
+    board.innerHTML = ''; 
     for (let i = 0; i < 9; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
@@ -44,15 +49,21 @@ function handleMove(event) {
         boardState[cellIndex] = currentPlayer;
         event.target.textContent = currentPlayer;
 
+        // Update both boards
+        document.querySelectorAll(`#p1-board .cell[data-index='${cellIndex}']`).forEach(cell => cell.textContent = currentPlayer);
+        document.querySelectorAll(`#p2-board .cell[data-index='${cellIndex}']`).forEach(cell => cell.textContent = currentPlayer);
+
         if (checkWin()) {
-            document.getElementById('game-message').textContent = `${players[currentPlayer]}, congratulations you won!`;
+            document.getElementById('winner-board-title').style.display = 'block';
+            document.getElementById('winner-board').style.display = 'grid';
+            document.getElementById('winner-message').textContent = `${players[currentPlayer]}, congratulations you won!`;
             highlightWinner();
             disableBoard();
             return;
         }
 
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        document.getElementById('game-message').textContent = `${players[currentPlayer]}, you're up!`;
+        document.getElementById('game-message').textContent = `${players[currentPlayer]}, you're up!`; // ✅ Updates main message
     }
 }
 
@@ -70,7 +81,7 @@ function checkWin() {
             boardState[pattern[0]] === boardState[pattern[2]]
         ) {
             pattern.forEach(index => {
-                document.querySelector(`.cell[data-index='${index}']`).classList.add('winner');
+                document.querySelectorAll(`.cell[data-index='${index}']`).forEach(cell => cell.classList.add('winner'));
             });
             return true;
         }

@@ -1,7 +1,4 @@
 /*  your css code here. If applicable */
-h1{
-	text-align:center;
-}
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -9,31 +6,37 @@ body {
 
 .container {
     margin: 20px auto;
-    width: 300px;
+    width: 350px;
 }
 
 .input-container {
     margin-bottom: 20px;
 }
 
+.boards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 0px;
+    grid-template-columns: repeat(3, 80px);
+    grid-gap: 5px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background: pink;
     font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .cell:hover {
