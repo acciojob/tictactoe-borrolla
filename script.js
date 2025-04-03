@@ -41,8 +41,10 @@
         
         function makeMove(cellId, boardId) {
             const boardCell = document.getElementById(`${boardId}-${cellId}`);
+			 const winnerCell = document.getElementById(`winner-board-${cellId}`);
             if (!boardCell.textContent && boardId === `p${currentPlayer === 'X' ? 1 : 2}-board`) {
                 boardCell.textContent = currentPlayer;
+				winnerCell.textContent = currentPlayer; // update the winner board with the current move
                 if (checkWin(boardId)) {
                     document.getElementById('winner-board-title').style.display = 'block';
                     document.getElementById('winner-board').style.display = 'grid';
