@@ -34,8 +34,9 @@
         for (let i = 1; i <=9; i++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
-            cell.id = `${boardId}-${i}`;
-			 cell.dataset.id = `${i}`; // add a data-id attribute for the Cypress test
+            cell.id = `${boardId}${i}`;
+			
+			cell.dataset.id = `${i}`; // add a data-id attribute for the Cypress test
             if (boardId !== 'winner-board') {
                 cell.addEventListener('click', () => makeMove(i, boardId));
             }
@@ -44,10 +45,10 @@
     }
     
     function makeMove(cellId, boardId) {
-        const boardCell = document.getElementById(`${boardId}-${cellId}`);
+        const boardCell = document.getElementById(`${boardId}${cellId}`);
 		 const winnerCell = document.getElementById(`winner-board-${cellId}`);
 		
-   if (!boardCell.textContent && boardId === `p${currentPlayer === 'X' ? 1 : 2}-board`) {
+   if (!boardCell.textContent && boardId === `${currentPlayer === 'X' ? 1 : 2}board`) {
         boardCell.textContent = currentPlayer;
   winnerCell.textContent = currentPlayer; // update the winner board with the current move
 
@@ -109,3 +110,5 @@
         });
 		 document.getElementById('winner-board-title').textContent = "TIC TAC TOE - Winner!";
     }
+
+
