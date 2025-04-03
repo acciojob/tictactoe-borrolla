@@ -25,7 +25,7 @@ body {
     grid-template-columns: repeat(3, 80px);
     grid-gap: 0px;
     justify-content: center;
-    margin-top: 10px;https://www.svgrepo.com/show/345221/three-dots.svg
+    margin: 0 10px;
 }
 
 .cell {

@@ -3,7 +3,7 @@
 const player1 = document.getElementById('player-1').value;
 const player2 = document.getElementById('player-2').value;
 
-        if (player1 && player2) {
+         if (player1 && player2) {
 			 const header = document.querySelector('h1');
 			 header.style.display = 'block';
               header.textContent = "TIC TAC TOE";  // Ensure it's always displayed
@@ -45,26 +45,33 @@ const player2 = document.getElementById('player-2').value;
     function makeMove(cellId, boardId) {
         const boardCell = document.getElementById(`${boardId}-${cellId}`);
 		 const winnerCell = document.getElementById(`winner-board-${cellId}`);
-        if (!boardCell.textContent && boardId === `p${currentPlayer === 'X' ? 1 : 2}-board`) {
-            boardCell.textContent = currentPlayer;
-			winnerCell.textContent = currentPlayer; // update the winner board with the current move
+		
+   if (!boardCell.textContent && boardId === `p${currentPlayer === 'X' ? 1 : 2}-board`) {
+        boardCell.textContent = currentPlayer;
+  winnerCell.textContent = currentPlayer; // update the winner board with the current move
+
+	   //       if (currentPlayer === 'X') {
+    //     currentPlayer = 'O';
+    //     document.querySelector('.message').textContent = `${player1}, you're up!`;
+    // } else {
+    //     currentPlayer = 'X';
+    //     document.querySelector('.message').textContent = `${player2}, you're up!`;
+    // }
+
+
             if (checkWin(boardId)) {
 				document.getElementById('winner-board-title').textContent = "TIC TAC TOE";
-				 document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;
+				 document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;    
                 document.getElementById('winner-board-title').style.display = 'block';
                 document.getElementById('winner-board').style.display = 'grid';
                 document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;  
                 highlightWinnerBoard();
                 return;
             }
-			
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-			
-           if (currentPlayer === 'X') {
-			    document.getElementById('p1-message').textContent = `${player1}, you're up!`;
-			} else {
-			    document.getElementById('p2-message').textContent = `${player2}, you're up!`;
-			}
+            document.querySelector('.message').textContent = `${players[currentPlayer]}, you're up!`;
+			document.getElementById('p1-message').textContent = `${player1}, you're up!`;
+           document.getElementById('p2-message').textContent = `${player2}, you're up!`;
 
         }
     }
