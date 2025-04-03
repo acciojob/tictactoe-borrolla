@@ -61,10 +61,10 @@ const player2 = document.getElementById('player-2').value;
 
             if (checkWin(boardId)) {
 				document.getElementById('winner-board-title').textContent = "TIC TAC TOE";
-				 document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;    
+			    document.getElementById('winner-board-title').textContent = `${players[currentPlayer]}, congratulations you won!`;    
                 document.getElementById('winner-board-title').style.display = 'block';
                 document.getElementById('winner-board').style.display = 'grid';
-                document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;  
+                //document.querySelector('.message').textContent = `${players[currentPlayer]}, congratulations you won!`;  
                 highlightWinnerBoard();
                 return;
             }
